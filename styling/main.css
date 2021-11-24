@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap");
+
+html {
+  /* Text */
+  font-family: "Red Hat Display", sans-serif;
+
+  --font-weight-regular: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  --font-size-heading: clamp(2.2rem, 1.9273rem + 0.7273vw, 2.8rem);
+  --font-size-body: clamp(1.5rem, 1.4545rem + 0.1212vw, 1.6rem);
+  --font-size-small: clamp(1.4rem, 1.3091rem + 0.2424vw, 1.6rem);
+  --font-size-detail: clamp(1.3rem, 1.2545rem + 0.1212vw, 1.4rem);
+  --line-height-body: 2.5rem;
+
+  /* Colors */
+  --pale-blue: hsl(225, 100%, 94%);
+  --bright-blue: hsl(245, 75%, 52%);
+  --very-pale-blue: hsl(225, 100%, 98%);
+  --desaturated-blue: hsl(223, 23%, 55%);
+  --dark-blue: hsl(223, 47%, 23%);
+  --button-hover-col: hsl(245, 83%, 68%);
+}
+
+body {
+  background: var(--pale-blue);
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background-image: url(/images/pattern-background-desktop.svg);
+  background-repeat: repeat-x;
+  background-position: top;
+}
+
+.order-summary {
+  background: white;
+  border-radius: 2rem;
+  overflow: hidden;
+  width: 90%;
+  max-width: 32.7rem;
+  transition: max-width 250ms;
+}
+
+@media screen and (min-width: 768px) {
+  .order-summary {
+    max-width: 45rem;
+  }
+}
+
+.img-container,
+.img-container img {
+  width: 100%;
+}
+
+.text-container {
+  padding: 3.2rem 2.4rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: start;
+  gap: 1.6rem;
+}
+
+.text-container > *:not(:nth-child(1)):not(:nth-last-child(1)) {
+  margin-bottom: 0.8rem;
+}
+
+@media screen and (min-width: 768px) {
+  .text-container {
+    gap: 1.7rem;
+    padding: 4.5rem 4.8rem 4.8rem;
+  }
+
+  .text-container
+    > *:not(:nth-child(1)):not(:nth-last-child(1)):not(:nth-child(2)) {
+    margin-bottom: 1.5rem;
+  }
+
+  .text-container > *:nth-child(2) {
+    margin-bottom: 0.3rem;
+  }
+}
+
+.text-container__heading {
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-black);
+  color: var(--dark-blue);
+}
+
+.text-container__description {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  text-align: center;
+  color: var(--desaturated-blue);
+  max-width: 32.5rem;
+}
+
+.text-container__selected-service-container {
+  background: var(--very-pale-blue);
+  width: 100%;
+  border-radius: 1.1rem;
+  padding: 1.7rem 1.6rem 1.6rem;
+  display: grid;
+  grid: 1fr / max-content max-content 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+    .text-container__selected-service-container{
+      padding: 2.5rem 2.4rem;
+    }
+  }
+
+.text-container__selected-service-container .selected-service {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.selected-service .selected-plan {
+  font-size: var(--font-size-small);
+  color: var(--dark-blue);
+  font-weight: var(--font-weight-black);
+}
+.selected-service .plan-price {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--desaturated-blue);
+}
+
+button.change {
+  justify-self: end;
+  width: min-content;
+  padding: 0;
+  color: var(--bright-blue);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-detail);
+  position: relative;
+  transition: color 250ms;
+}
+
+button.change::before {
+  content: "";
+  width: 100%;
+  height: 0.1rem;
+  background: var(--bright-blue);
+  position: absolute;
+  bottom: -0.1rem;
+  left: 0;
+  transform-origin: center;
+  transition: transform 250ms;
+}
+
+button.change:hover {
+  color: var(--button-hover-col);
+}
+
+button.change:hover::before {
+  transform: scaleX(0);
+}
+
+.text-container__payment {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 1.1rem;
+  background: var(--bright-blue);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  transition: background 250ms;
+  color: white;
+}
+
+.text-container__payment:hover {
+  background: var(--button-hover-col);
+}
+
+.text-container__cancel {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--desaturated-blue);
+  transition: color 250ms;
+}
+.text-container__cancel:hover {
+    color: var(--dark-blue);
+}
+
+
